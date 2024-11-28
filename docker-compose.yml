@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-taxi-app
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./.env
+    networks:
+      - net-taxi-app
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-taxi-app
+    volumes:
+      - taxi-app-volume:/var/www/html
+    networks:
+      - net-taxi-app
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx-taxi-app
+    ports:
+      - "80:80"
+    volumes:
+      - taxi-app-volume:/var/www/html
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - net-taxi-app
+
+networks:
+  net-taxi-app:
+    external: true
+
+volumes:
+  mongo-data:
+  taxi-app-volume:

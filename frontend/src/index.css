@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  @apply flex flex-col items-center justify-center w-full h-auto gap-4;
+}
+
+.containerBox {
+  @apply grid grid-cols-1 sm:grid-cols-2 place-items-center;
+}
+
+.containerCard {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16;
+}
+
+.card {
+  @apply flex flex-col justify-between space-y-3 border-2 border-gray-300 hover:border-primary p-4 min-h-96  rounded-xl shadow-lg;
+}
+
+.cardList {
+  @apply text-center space-y-3 sm:space-y-5 p-4 bg-dark  hover:bg-primary duration-300 text-white hover:text-black rounded-lg;
+}
+
+.title {
+  @apply text-3xl lg:text-4xl font-bold;
+}
+
+.subtitle {
+  @apply text-2xl font-bold;
+}
+
+.btn {
+  @apply rounded-md bg-primary hover:hover:bg-dark transition duration-500 py-2 px-6 text-dark hover:text-white;
+}
+
+.input {
+  @apply border p-2 mb-2 w-full max-w-md outline-primary placeholder:text-secondary-200;
+}
